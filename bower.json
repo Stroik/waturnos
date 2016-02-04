@@ -1,0 +1,23 @@
+{
+  "name": "Turnos",
+  "authors": [
+    "Augusto Marinaro <augusto.marinaro@graion.com>"
+  ],
+  "description": "Reservas de turnos por Whatsapp",
+  "main": "",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "turnos"
+  ],
+  "license": "MIT",
+  "homepage": "index.html",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.4.9",
+    "angular-ui-router": "~0.2.17",
+    "bootstrap": "~3.3.6",
+    "angular-clipboard": "~1.3.0"
+  }
+}

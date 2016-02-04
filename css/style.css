@@ -32,3 +32,12 @@
 .navbar-custom .icon-bar {
   	background-color:#33aa33;
 }
+td.opciones-turnos .tooltips a {
+  font-size: 20px;
+  padding: 0;
+  margin-left: 5px;
+  color: rgb(23, 106, 23);
+}
+td.opciones-turnos .tooltips {
+  display: table-cell;
+}

@@ -3,23 +3,24 @@
     <table class="table turnos">
     	<thead>
     		<tr>
-    			<th><strong>Fecha/Hora</strong></th>
+    			<th ng-click="pushToDb()"><strong>Fecha/Hora</strong></th>
     			<th><strong>Mensaje</strong></th>
-    			<th colspan="150">Copiar</th>
+    			<th>Opciones</th>
     		</tr>
     	</thead>
     	<tbody>
-	        <tr ng-repeat="turno in $storage.turnos">
+	        <tr ng-repeat="turno in turnos">
 	        	<td style="color: #999;text-align:center;">{{turno.createdAt}}</td>
 				<td id="turno{{index}}">
 					<i>{{turno.sexo}} {{turno.nombre}} {{turno.apellido}}</i> le informamos que tiene un turno disponible el día <i>{{turno.fechayhora | date: 'dd-MM-yyyy HH:mm'}}</i> con el médico {{turno.doctores}} ({{turno.especialista}})
 				</td>
-				<td style="text-align:center">
-					<span class="button-checkbox">
-		              <button type="button" class="btn" data-color="info" tabindex="7" ng-click="copy(turno, $index)">
+				<td style="text-align:center" class="opciones-turnos">
+		              <a type="button" class="btn" data-color="info" ng-click="copy(turno, $index)" tooltips tooltip-template="Copiar mensaje" tooltip-side="left">
 		                 <i class="glyphicon glyphicon-copy"></i>
-		              </button>  
-		            </span>
+		              </a>  
+		              <a type="button" class="btn" data-color="info" tooltips tooltip-template="Detalle" tooltip-side="left">
+		                 <i class="glyphicon glyphicon-eye-open"></i>
+		              </a>  
 				</td>
 	        </tr>
 		</tbody>

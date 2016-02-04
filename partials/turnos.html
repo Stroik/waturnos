@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <h1>Turnos</h1>
+    <table class="table turnos">
+    	<thead>
+    		<tr>
+    			<th><strong>Fecha/Hora</strong></th>
+    			<th><strong>Mensaje</strong></th>
+    			<th colspan="150">Opciones</th>
+    		</tr>
+    	</thead>
+    	<tbody>
+	        <tr ng-repeat="turno in $storage.turnos">
+	        	<td style="color: #999;text-align:center;">{{turno.createdAt}}</td>
+				<td id="turno{{index}}">
+					<i>{{turno.sexo}} {{turno.nombre}} {{turno.apellido}}</i> le informamos que tiene un turno disponible el día <i>{{turno.fechayhora | date: 'dd-MM-yyyy HH:mm'}}</i> con el médico {{turno.doctores}} ({{turno.especialista}})
+				</td>
+				<td style="text-align:center">
+					<span class="button-checkbox">
+		              <button type="button" class="btn" data-color="info" tabindex="7" ng-click="copy(turno, $index)">
+		                 <i class="glyphicon glyphicon-copy"></i>
+		              </button>  
+		            </span>
+				</td>
+	        </tr>
+		</tbody>
+    </table>
+</div>

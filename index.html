@@ -1,43 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="turnos">
+
 <head>
-	<meta charset="utf-8" />
-	<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap-theme.min.css" />
-	<title></title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Whatsapp Turnos</title>
 </head>
-<body ng-app="turnos">
-<!-- Menu -->
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Turnos</a>
-    </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="menu-turnos">
-      <ul class="nav navbar-nav">
-        <li class="active" ng-class="getClass('/inicio')"><a href="#/inicio" ui-sref="inicio">Inicio</a></li>
-        <li ng-class="getClass('/nuevo-turno')"><a href="#/nuevo-turno" ui-sref="nuevo-turno"><i class="glyphicon glyphicon-plus-sign"></i> Nuevo turno</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li ng-class="getClass('/soporte')"><a href="#/soporte" ui-sref="soporte">Soporte</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<!-- Vistas -->
-<div ui-view></div>
-
-<!-- Librerias -->
-<script type="text/javascript" src="lib/angular/angular.min.js"></script>
-<script type="text/javascript" src="lib/angular-clipboard/angular-clipboard.js"></script>
-<script type="text/javascript" src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
-
-<!-- App -->
-<script type="text/javascript" src="js/app.js"></script>
-<script type="text/javascript" src="js/controllers.js"></script>
+<body>
+    <!-- Menu -->
+    <nav class="navbar navbar-custom">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Turnos</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="menu-turnos">
+                <ul class="nav navbar-nav">
+                    <li ng-class="getClass('/inicio')">
+                        <a href="#/inicio" ui-sref="inicio">Inicio</a>
+                    </li>
+                    <li ng-class="getClass('/nuevo-turno')">
+                        <a href="#/nuevo-turno" ui-sref="nuevo-turno"><i class="glyphicon glyphicon-plus-sign"></i> Nuevo turno</a>
+                    </li>
+                    <li ng-class="getClass('/turnos')">
+                        <a href="#/turnos" ui-sref="turnos"> Turnos</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-class="getClass('/soporte')">
+                        <a href="#/soporte" ui-sref="soporte">Soporte</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Vistas -->
+    <div ui-view></div>
+    <!-- Librerias -->
+    <script type="text/javascript" src="lib/angular/angular.min.js"></script>
+    <script type="text/javascript" src="lib/ngstorage/ngStorage.min.js"></script>
+    <script type="text/javascript" src="lib/angular-clipboard/angular-clipboard.js"></script>
+    <script type="text/javascript" src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <!-- App -->
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/controllers.js"></script>
 </body>
+
 </html>

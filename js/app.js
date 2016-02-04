@@ -1,9 +1,7 @@
-angular.module('turnos', ['ui.router', 'angular-clipboard', 'turnos.controllers'])
+angular.module('turnos', ['ui.router', 'angular-clipboard', 'turnos.controllers', 'ngStorage'])
 
 .config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/inicio");
-  //
-  // Now set up the states
   $stateProvider
     .state('inicio', {
       url: "/inicio",
@@ -15,12 +13,31 @@ angular.module('turnos', ['ui.router', 'angular-clipboard', 'turnos.controllers'
       templateUrl: "partials/nuevo-turno.html",
       controller: "turnosCtrl"
     })
+    .state('turnos', {
+      url: "/turnos",
+      templateUrl: "partials/turnos.html",
+      controller: "turnosCtrl"
+    })
     .state('soporte', {
       url: "/soporte",
       templateUrl: "partials/soporte.html",
       controller: "soporteCtrl"
     });
-}).run(function($rootScope, $location){
+}).run(function($rootScope, $location, $localStorage){
+  if($localStorage.turnos){
+  }
+  else if(!$localStorage.turnos){
+    $localStorage.turnos = [];
+  }
+  else{
+  }
+  if($localStorage.mensajes){
+  }
+  else if(!$localStorage.mensajes){
+    $localStorage.mensajes = [];
+  }
+  else{
+  }
 	$rootScope.getClass = function(path) {
 	  if ($location.path().substr(0, path.length) === path) {
 	    return 'active';
@@ -42,7 +59,7 @@ angular.module('turnos', ['ui.router', 'angular-clipboard', 'turnos.controllers'
       if(minute.toString().length == 1) {var minute = '0'+minute;}
       if(second.toString().length == 1) {var second = '0'+second;}
       var ampm = hour >= 12 ? 'PM' : 'AM';
-      var dateTime = day+'/'+month+'/'+year;  
+      var dateTime = day+'/'+month+'/'+year+' '+hour+':'+minute+':'+second + ' ' + ampm;   
       return dateTime;
     };
 });

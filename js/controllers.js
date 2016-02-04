@@ -1,35 +1,44 @@
 angular.module('turnos.controllers', [])
 
-.controller('inicioCtrl', function($scope){
-		
+.controller('inicioCtrl', function($scope) {
+    $scope.titulo = "Inicio";
 })
-.controller('turnosCtrl', function($scope, $rootScope){
-	$scope.success = function () {
+.controller('turnosCtrl', function($scope, $rootScope, $filter, $localStorage, clipboard) {
+    $scope.titulo = "Turnos";
+    $scope.$storage = $localStorage;
+
+    $scope.success = function() {
         console.log('Copied!');
     };
-    $scope.fail = function (err) {
+    $scope.fail = function(err) {
         console.error('Error!', err);
     };
 
-	$scope.turnos = [];
-	$scope.mensajes = [];
-	$scope.turno = {};
-	var fecha = $rootScope.getDateTime();
-	console.log(fecha);
+    $scope.turnos = $localStorage.turnos;
+    $scope.mensajes = $localStorage.mensajes;
+    $scope.turno = {}
 
-	$scope.agregarTurno = function(turno){
-		if(turno.nombre && turno.apellido && turno.hora && turno.fecha && turno.especialista && turno.direccion && turno.telefono && turno.especialista && turno.doctores){
-			$scope.turnos.push(turno);
-			console.log($scope.turnos);
-			$scope.mensaje = 'Estimado '+ $scope.turno.sexo + $scope.turno.nombre + ' '+$scope.turno.apellido + '.' + ' Le informamos que tiene un turno disponible el día ' + $scope.turno.fecha + ' a las ' + $scope.turno.hora + ' con el médico ' + $scope.turno.doctores + '('+$scope.turno.especialista+')';
-			$scope.mensajes.push($scope.mensaje);
-			$scope.turno = {};
-		}
-		else{
-			alert('Todos los campos son obligatorios');
-		}
-	};
+    $scope.copy = function(turno, index) {
+        clipboard.copyText(turno.sexo + turno.nombre + ' ' + turno.apellido + '.' + ' Le informamos que tiene un turno disponible el día ' + $filter('date')(turno.fechayhora, 'dd-MM-yyyy HH:mm') + ' con el médico ' + turno.doctores + ' (' + turno.especialista + ')');
+    };
+
+    $scope.turno.createdAt = $rootScope.getDateTime();
+    $scope.agregarTurno = function(turno) {
+        if (turno.nombre && turno.apellido && turno.fechayhora && turno.especialista && turno.direccion && turno.telefono && turno.especialista && turno.doctores) {
+            $scope.turnos.push(turno);
+            console.log($scope.turnos);
+            $scope.mensaje = 'Estimado ' + $scope.turno.sexo + $scope.turno.nombre + ' ' + $scope.turno.apellido + '.' + ' Le informamos que tiene un turno disponible el día ' + $scope.turno.fechayhora + ' con el médico ' + $scope.turno.doctores + '(' + $scope.turno.especialista + ')';
+            $scope.mensajes.push($scope.mensaje);
+            $scope.vaciar();
+        } else {
+            alert('Todos los campos son obligatorios');
+        }
+    };
+
+    $scope.vaciar = function() {
+        $scope.turno = {};
+    }
 })
-.controller('soporteCtrl', function($scope){
-
+.controller('soporteCtrl', function($scope) {
+    $scope.titulo = "Soporte";
 })

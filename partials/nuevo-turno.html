@@ -2,7 +2,7 @@
   <div class="row">
       <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
       <form role="form">
-        <h2>Nuevo Turno <small>Agregue los datos y copie el mensaje</small></h2>
+        <h2>Nuevo Turno <small>Sistema de respuestas</small></h2>
         <hr class="colorgraph">
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-6">
@@ -19,7 +19,7 @@
         <div class="row">
           <div class="col-xs-12 col-sm-9 col-md-9">
             <div class="form-group">
-              <input type="tel" name="direccion" id="teléfono" class="form-control input-lg" placeholder="Teléfono" tabindex="1" ng-model="turno.telefono">
+              <input type="tel" name="telefono" id="telefono" class="form-control input-lg" placeholder="Teléfono" tabindex="3" ng-model="turno.telefono">
             </div>
           </div>
           <div class="col-xs-12 col-sm-3 col-md-3">
@@ -33,21 +33,23 @@
           </div>
         </div>
         <div class="form-group">
-          <input type="text" name="display_name" id="display_name" class="form-control input-lg" placeholder="Dirección" tabindex="3" ng-model="turno.direccion">
-        </div>
-        <div class="form-group">
-          <select type="text" name="especialista" id="especialista" class="form-control input-lg" placeholder="Especialista" tabindex="4" ng-model="turno.especialista">
-            <option disabled>Especialista</option>
-            <option value="Medico Clinico">Medico Clinico</option>
-            <option value="Medico Gerontologo">Medico Gerontologo</option>
-            <option value="Medico Neumonologo">Medico Neumonologo</option>
-            <option value="Medico Cirujano">Medico Cirujano</option>
-          </select>
+          <input type="text" name="direccion" id="direccion" class="form-control input-lg" placeholder="Dirección" tabindex="5" ng-model="turno.direccion">
         </div>
         <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-12">
+          <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
-              <select type="text" name="doctores" id="doctores" class="form-control input-lg" placeholder="Doctores" tabindex="4" ng-model="turno.doctores">
+              <select type="text" name="especialista" id="especialista" class="form-control input-lg" placeholder="Especialista" tabindex="6" ng-model="turno.especialista">
+                <option disabled>Especialista</option>
+                <option value="Medico Clinico">Medico Clinico</option>
+                <option value="Medico Gerontologo">Medico Gerontologo</option>
+                <option value="Medico Neumonologo">Medico Neumonologo</option>
+                <option value="Medico Cirujano">Medico Cirujano</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+              <select type="text" name="doctores" id="doctores" class="form-control input-lg" placeholder="Doctores" tabindex="7" ng-model="turno.doctores">
                 <option disabled>Medicos disponibles</option>
                 <option value="Dr. Carlos Santoro">Dr. Carlos Santoro</option>
                 <option value="Dr. Sergio Romero">Dr. Sergio Romero</option>
@@ -56,38 +58,17 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-xs-12 col-sm-6 col-md-6">
+          <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-              <input type="date" name="fecha" id="fecha" class="form-control input-lg" placeholder="Fecha" tabindex="6" ng-model="turno.fecha">
-            </div>
-          </div>
-          <div class="col-xs-12 col-sm-6 col-md-6">
-            <div class="form-group">
-              <input type="time" name="hora" id="hora" class="form-control input-lg" placeholder="Confirm Password" tabindex="6" ng-model="turno.hora">
+              <input type="datetime-local" name="fecha" id="fecha" class="form-control input-lg" placeholder="Fecha" tabindex="8" ng-model="turno.fechayhora">
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-xs-4 col-sm-3 col-md-3">
-            <span class="button-checkbox">
-              <button type="button" class="btn" data-color="info" tabindex="7" 
-              clipboard text="mensaje" on-copied="success()" on-error="fail(err)">Copiar Mensaje</button>
-                
-            </span>
+          <div class="col-xs-6 col-md-6">
+            <input type="submit" value="Vaciar campos" class="btn btn-primary btn-block btn-lg" tabindex="9" ng-click="vaciar()">
           </div>
-          <div class="col-xs-8 col-sm-9 col-md-9">
-             <textarea id="mensaje" cols="51" rows="3" ng-repeat="mensaje in mensajes | limitTo: 1 | orderBy: desc">
-               {{mensaje}}
-             </textarea>
-          </div>
-        </div>
-        
-        <hr class="colorgraph">
-        <div class="row">
-          <div class="col-xs-12 col-md-6">
-            <input type="submit" value="Vaciar campos" class="btn btn-primary btn-block btn-lg" tabindex="7">
-          </div>
-          <div class="col-xs-12 col-md-6">
+          <div class="col-xs-6 col-md-6">
             <a href="javascript:void(0)" class="btn btn-success btn-block btn-lg" ng-click="agregarTurno(turno)">Agregar</a>
           </div>
         </div>

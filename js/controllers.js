@@ -3,7 +3,7 @@ angular.module('turnos.controllers', [])
 .controller('inicioCtrl', function($scope) {
     $scope.titulo = "Inicio";
 })
-.controller('turnosCtrl', function($scope, $rootScope, $filter, $localStorage, clipboard) {
+.controller('turnosCtrl', function($scope, $rootScope, $filter, $localStorage, clipboard, $state) {
     $scope.titulo = "Turnos";
     $scope.$storage = $localStorage;
 
@@ -30,6 +30,7 @@ angular.module('turnos.controllers', [])
             $scope.mensaje = 'Estimado ' + $scope.turno.sexo + $scope.turno.nombre + ' ' + $scope.turno.apellido + '.' + ' Le informamos que tiene un turno disponible el día ' + $scope.turno.fechayhora + ' con el médico ' + $scope.turno.doctores + '(' + $scope.turno.especialista + ')';
             $scope.mensajes.push($scope.mensaje);
             $scope.vaciar();
+            $state.go('turnos');
         } else {
             alert('Todos los campos son obligatorios');
         }
